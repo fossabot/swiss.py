@@ -22,7 +22,7 @@ def calculate_change(a, b):
         >>> calculate_change((5, 2), (-3, 4))
         (-8, 2)
     """
-    return b[0] - a[0], b[1] - a[1])
+    return b[0] - a[0], b[1] - a[1]
 
 
 def calculate_distance(a, b):
@@ -33,8 +33,7 @@ def calculate_distance(a, b):
         b (tuple): The x and y coordinates of the second point.
     
     Returns:
-        tuple: A new point containing the geometric distance between the points
-            a and b.
+        float: The geometric distance between the points a and b.
 
     Examples:
         >>> calculate_distance((1, 1), (1, 1))
@@ -47,34 +46,89 @@ def calculate_distance(a, b):
     return math.hypot(*calculate_change(a, b))
 
 
-# calculate the gradient between two points.
-# 
-# @param  tuple  a the x and y coordinates of the first point.
-# @param  tuple  b the x and y coordinates of the second point.
-# 
-# @returns  float  the ratio between the change of two points.
 def calculate_slope(a, b):
-  dx, dy = calculate_change(a, b)
-  return dy / dx
+    """Calculate the gradient between two points.
+    
+    Arguments:
+        a (tuple): The x and y coordinates of the first point.
+        b (tuple): The x and y coordinates of the second point.
+    
+    Returns:
+        float: The ratio between the change of the coordinates belonging to the
+            two points.
+
+    Examples:
+        >>> calculate_slope((1, 1), (1, 1))
+        None
+        >>> calculate_slope((1, 1), (3, 3))
+        1.0
+        >>> calculate_slope((5, 2), (-3, 4))
+        -0.25
+    """
+    dx, dy = calculate_change(a, b)
+    return None if dx == 0 else dy / dx
 
 
-# determine if a point lies within a defined circle.
-# 
-# @param  tuple  point  the x and y coordinates of point to test against.
-# @param  tuple  center  the x and y coordinates of the center of the circle.
-# @param  int  the radius of the circle. 
-# 
-# @returns  bool  True if the point lies within the defined circle boundries, 
-#                 otherwise False.
-def is_in_circle(point, center=(0, 0), radius=1):
+def is_in_circle(point, center, radius):
+    """Determine if a point lies within a defined circle.
+    
+    Arguments:
+        point (tuple): The x and y coordinates of point to test against.
+        center (tuple): The x and y coordinates of the center of the circle.
+        radius (float): The radius of the circle. 
+    
+    Returns:
+        bool: True if the point lies within the defined circle boundries,
+            otherwise False.
+
+    Examples:
+        >>> is_in_circle((1,1), (0, 0), 1)
+        True
+        >>> is_in_circle((3,3), (1, 1), 1)
+        False
+        >>> is_in_circle((5,2), (-3, 4), 11)
+        True
+    """
     return calculate_distance(center, point) <= radius
 
 
 def is_in_range(a, b, radius):
-  return all(map(lambda (x, y): abs(x - y) < radius, zip(a, b)))
+    """Determine if two points are within a defined radius of each other.
+    
+    Arguments:
+        a (tuple): The x and y coordinates of the first point.
+        b (tuple): The x and y coordinates of the second point.
+        radius (tuple): The maximum distance between the two points that can be
+            considered within the range of acceptability. 
+    
+    Returns:
+        bool: True if either point is within the given radius of the other,
+            otherwise False.
+
+    Examples:
+        >>> is_in_range((1,1), (0, 0), 1)
+        True
+        >>> is_in_range((3,3), (1, 1), 1)
+        False
+        >>> is_in_range((5,2), (-3, 4), 11)
+        True
+    """
+    return all(map(lambda (x, y): abs(x - y) < radius, zip(a, b)))
 
 
 def rotate_point(center, point, theta):
+       """
+    
+    Arguments:
+        name (type):
+    
+    Returns:
+        type:
+
+    Examples:
+        >>> function
+        result
+    """
   dx, dy = calculate_change(point, center)
   x = (dx * math.cos(theta)) - (dy * math.sin(theta))
   y = (dy * math.cos(theta)) + (dx * math.sin(theta))
@@ -82,10 +136,34 @@ def rotate_point(center, point, theta):
 
 
 def sort_clockwise(center, points):
+       """
+    
+    Arguments:
+        name (type):
+    
+    Returns:
+        type:
+
+    Examples:
+        >>> function
+        result
+    """
   return sorted(points, key=lambda p: math.atan2(p[1] - center[1], p[0] - center[0]))
 
 
 def translate_point(center, point, distance):
+       """
+    
+    Arguments:
+        name (type):
+    
+    Returns:
+        type:
+
+    Examples:
+        >>> function
+        result
+    """
   distance_old = calculate_distance(center, point)
   x = point[0] + (((point[0] - center[0]) / distance_old) * (distance - distance_old))
   y = point[1] + (((point[1] - center[1]) / distance_old) * (distance - distance_old))
