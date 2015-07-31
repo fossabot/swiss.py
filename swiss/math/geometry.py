@@ -115,7 +115,7 @@ def is_in_range(a, b, radius):
 
 
 def rotate_point(center, point, theta):
-       """
+    """
     
     Arguments:
         name (type):
@@ -127,14 +127,14 @@ def rotate_point(center, point, theta):
         >>> function
         result
     """
-  dx, dy = calculate_change(point, center)
-  x = (dx * math.cos(theta)) - (dy * math.sin(theta))
-  y = (dy * math.cos(theta)) + (dx * math.sin(theta))
-  return x + center[0], y + center[1]
+    dx, dy = calculate_change(point, center)
+    x = (dx * math.cos(theta)) - (dy * math.sin(theta))
+    y = (dy * math.cos(theta)) + (dx * math.sin(theta))
+    return x + center[0], y + center[1]
 
 
 def sort_clockwise(center, points):
-       """
+    """
     
     Arguments:
         name (type):
@@ -146,23 +146,31 @@ def sort_clockwise(center, points):
         >>> function
         result
     """
-  return sorted(points, key=lambda p: math.atan2(p[1] - center[1], p[0] - center[0]))
+    return sorted(points, key=lambda p: math.atan2(p[1] - center[1], p[0] - center[0]))
 
 
-def translate_point(center, point, distance):
-       """
+def translate_point(tail, head, distance):
+    """Translate a point a specific distance along a vector starting from the
+        vector's tail.
     
     Arguments:
-        name (type):
+        tail (tuple): The x and y coordinates of the tail of the vector.
+        head (tuple): The x and y coordinates of the head of the vector.
+        distance (float): The geometric distance to translate the point by.
     
     Returns:
-        type:
+        tuple: The x and y coordinates of a point translated by 'distance'
+            along the defined vector, relative to it's tail.
 
     Examples:
-        >>> function
-        result
+        >>> translate_point((0, 0), (1, 1), 1)
+        (0.7071067811865475, 0.7071067811865475) 
+        >>> translate_point((1, 1), (3, 3), -1)
+        (0.29289321881345254, 0.29289321881345254) 
+        >>> translate_point((5, 2), (-3, 4), 3)
+        (2.089572499564004, 2.7276068751089992) 
     """
-  distance_old = calculate_distance(center, point)
-  x = point[0] + (((point[0] - center[0]) / distance_old) * (distance - distance_old))
-  y = point[1] + (((point[1] - center[1]) / distance_old) * (distance - distance_old))
-  return x, y
+    distance_old = calculate_distance(tail, head)
+    x = head[0] + (((head[0] - tail[0]) / distance_old) * (distance - distance_old))
+    y = head[1] + (((head[1] - tail[1]) / distance_old) * (distance - distance_old))
+    return x, y
