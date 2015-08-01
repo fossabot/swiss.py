@@ -67,12 +67,12 @@ def calculate_slope(a, b):
     return None if dx == 0 else dy / dx
 
 
-def is_in_circle(point, center, radius):
+def is_in_circle(center, point, radius):
     """Determine if a point lies within a defined circle.
     
     Arguments:
-        point (tuple): The x and y coordinates of point to test against.
         center (tuple): The x and y coordinates of the center of the circle.
+        point (tuple): The x and y coordinates of point to test against.
         radius (float): The radius of the circle. 
     
     Returns:
@@ -115,19 +115,27 @@ def is_in_range(a, b, radius):
 
 
 def rotate_point(center, point, theta):
-    """
+    """Rotate a point around a center reference by a defined amount of radians.
     
     Arguments:
-        name (type):
+        center (tuple): The x and y coordinates of the reference by which to
+            rotate the point.
+        point (tuple): The x and y coordinates of the point to rotate.
+        theta (float): The amount of radians to rotate the point by.
     
     Returns:
-        type:
+        tuple: The x and y coordinates of the point, rotated by theta radians,
+            relative to the center reference.
 
     Examples:
-        >>> function
-        result
+        >>> rotate_point((0, 0), (1, 1), 1)
+        (-0.30116867893975674, 1.3817732906760363)  
+        >>> rotate_point((1, 1), (3, 3), 6.28318531)
+        (2.999999994359172, 3.000000005640828)
+        >>> rotate_point((5, 2), (3, 4), 0.785398163) 
+        (5.000000001124153, 4.82842712474619)
     """
-    dx, dy = calculate_change(point, center)
+    dx, dy = map(abs, calculate_change(point, center))
     x = (dx * math.cos(theta)) - (dy * math.sin(theta))
     y = (dy * math.cos(theta)) + (dx * math.sin(theta))
     return x + center[0], y + center[1]
@@ -149,14 +157,14 @@ def sort_clockwise(center, points):
     return sorted(points, key=lambda p: math.atan2(p[1] - center[1], p[0] - center[0]))
 
 
-def translate_point(tail, head, distance):
+def translate_point(distance, head, tail):
     """Translate a point a specific distance along a vector starting from the
         vector's tail.
     
     Arguments:
-        tail (tuple): The x and y coordinates of the tail of the vector.
-        head (tuple): The x and y coordinates of the head of the vector.
         distance (float): The geometric distance to translate the point by.
+        head (tuple): The x and y coordinates of the head of the vector.
+        tail (tuple): The x and y coordinates of the tail of the vector.
     
     Returns:
         tuple: The x and y coordinates of a point translated by 'distance'
