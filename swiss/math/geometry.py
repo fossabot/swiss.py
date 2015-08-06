@@ -73,7 +73,7 @@ def is_in_circle(center, point, radius):
     Arguments:
         center (tuple): The x and y coordinates of the center of the circle.
         point (tuple): The x and y coordinates of point to test against.
-        radius (float): The radius of the circle. 
+        radius (float): The radius of the circle.
     
     Returns:
         bool: True if the point lies within the defined circle boundries,
@@ -142,19 +142,27 @@ def rotate_point(center, point, theta):
 
 
 def sort_clockwise(center, points):
-    """
+    """ Sort a list of points clockwise relative to a center point.
     
     Arguments:
-        name (type):
+        center (tuple): The x and y coordinates of the rotational reference for
+            the points.
+        points (list): A list of the x and y coordinates of the points to sort.
     
     Returns:
-        type:
+        list: A list of the provided points sorted clockwise, relative to the
+            provided rotational reference.
 
     Examples:
-        >>> function
-        result
+        >>> sort_clockwise((0, 0), [(1,1), (-1, -1), (-1, 1), (1, -1)])
+        [(-1, 1), (1, 1), (1, -1), (-1, -1)]
+        TODO(mraxilus): Something is wrong with this function. I do not believe
+            that it is correct. See the following:
+        >>> sort_clockwise((2, 2), [(1,1), (-1, -1), (-1, 1), (1, -1)])                                                                     [(1, -1), (1, 1), (-1, -1), (-1, 1)]    
     """
-    return sorted(points, key=lambda p: math.atan2(p[1] - center[1], p[0] - center[0]))
+    return sorted(points, 
+                  key=lambda p: math.atan2(p[1] - center[1], p[0] - center[0]), 
+                  reverse=True)
 
 
 def translate_point(distance, head, tail):
