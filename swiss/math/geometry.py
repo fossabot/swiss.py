@@ -156,9 +156,8 @@ def sort_clockwise(center, points):
     Examples:
         >>> sort_clockwise((0, 0), [(1,1), (-1, -1), (-1, 1), (1, -1)])
         [(-1, 1), (1, 1), (1, -1), (-1, -1)]
-        TODO(mraxilus): Something is wrong with this function. I do not believe
-            that it is correct. See the following:
-        >>> sort_clockwise((2, 2), [(1,1), (-1, -1), (-1, 1), (1, -1)])                                                                     [(1, -1), (1, 1), (-1, -1), (-1, 1)]    
+        >>> sort_clockwise((2, 2), [(1,1), (-1, -1), (-1, 1), (1, -1)])                                                                 [(1, -1), (1, 1), (-1, -1), (-1, 1)]
+        >>> sort_clockwise((5, 5), [(7, -2), (5,0), (-1, -1), (3, -1)])                                                                 [(7, -2), (5, 0), (3, -1), (-1, -1)]   
     """
     return sorted(points, 
                   key=lambda p: math.atan2(p[1] - center[1], p[0] - center[0]), 
