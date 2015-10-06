@@ -1,5 +1,7 @@
-[swiss.py][linkedin] ![GitHub version][version_badge] [![Build status][travis_image]][travis_status]
-=============
+[swiss.py][linkedin]
+====================
+![GitHub version][version_badge] [![Build status][travis_image]][travis_status]
+
 _Creating a pocket sized toolkit library for any situation._
 
 Purpose
