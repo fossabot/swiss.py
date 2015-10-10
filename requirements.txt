@@ -1,2 +1,2 @@
-bunch
+bunch==1.0.1
 
