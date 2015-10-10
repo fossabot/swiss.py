@@ -1,1 +1,0 @@
-from swiss import version
