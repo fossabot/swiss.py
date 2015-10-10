@@ -1,1 +1,2 @@
-from swiss import version
+from .swiss import version
+

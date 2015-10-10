@@ -1,1 +1,1 @@
-from general import dedupe
+from .general import dedupe

@@ -19,11 +19,11 @@ def dedupe(sequence, function=None):
             for element in sequence:
                 if element not in seen:
                     seen.add(element)
-                yield element
+                    yield element
         else:
             for element in sequence:
                 element = function(element)
                 if element not in seen:
                     seen.add(element)
-                yield element
+                    yield element
     return list(_dedupe(sequence, function))
