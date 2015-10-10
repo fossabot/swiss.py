@@ -9,5 +9,6 @@ setup(name='swiss',
       author_email='esmith@projectaxil.us',
       url='http://swiss.projectaxil.us',
       packages=['swiss'],
+      package_dir={'swiss': 'source/swiss'}
      )
 
