@@ -1,6 +1,6 @@
 [swiss.py][github_pages]
 ========================
-[![GitHub version][github_badge]][github_tags] [![Build status][travis_badge]][travis] [![Code coverage][codecov_badge]][codecov]
+[![GitHub version][github_badge]][github_tags] [![Build status][travis_badge]][travis] [![Code coverage][codecov_badge]][codecov] [![PyPI version][pypi_badge]][pypi]
 
 _Creating a pocket sized toolkit library for any situation._
 
@@ -25,5 +25,7 @@ This project is licensed under [CC BY-NC-SA 4.0][license].
 [github_pages]: http://mr.axilus.name/swiss.py/
 [github_tags]: https://github.com/mraxilus/swiss.py/tags
 [license]: https://creativecommons.org/licenses/by-nc-sa/4.0/
+[pypi]: https://pypi.python.org/pypi/swisspy/
+[pypi_badge]: https://img.shields.io/pypi/v/swisspy.svg
 [travis]: https://travis-ci.org/mraxilus/swiss.py
 [travis_badge]: https://img.shields.io/travis/mraxilus/swiss.py.svg
