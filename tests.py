@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 
-import swiss.structures as SS
+import sys
 import unittest
+
+sys.path.append('./source')
+import swiss.structures as SS
 
 class TestStructures(unittest.TestCase):
     def test_dedupe(self):
