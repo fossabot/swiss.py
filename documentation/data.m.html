@@ -3,7 +3,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 
-    <title>swiss API documentation</title>
+    <title>swiss.data API documentation</title>
     <meta name="description" content="" />
 
   <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300' rel='stylesheet' type='text/css'>
@@ -1035,14 +1035,15 @@ table {
     <h1>Index</h1>
     <ul id="index">
 
+    <li class="set"><h3><a href="#header-functions">Functions</a></h3>
+      
+  <ul>
+    <li class="mono"><a href="#swiss.data.dedupe">dedupe</a></li>
+  </ul>
 
-
-    <li class="set"><h3><a href="#header-submodules">Sub-modules</a></h3>
-      <ul>
-        <li class="mono"><a href="data.m.html">swiss.data</a></li>
-        <li class="mono"><a href="geometry.m.html">swiss.geometry</a></li>
-      </ul>
     </li>
+
+
     </ul>
   </div>
 
@@ -1054,26 +1055,40 @@ table {
 
 
   <header id="section-intro">
-  <h1 class="title"><span class="name">swiss</span> module</h1>
+  <h1 class="title"><span class="name">swiss.data</span> module</h1>
   
   
-  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-swiss', this);">Show source &equiv;</a></p>
-  <div id="source-swiss" class="source">
-    <div class="codehilite"><pre><span class="kn">from</span> <span class="nn">.data</span> <span class="kn">import</span> <span class="n">dedupe</span>
-<span class="kn">from</span> <span class="nn">.geometry</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">calculate_change</span><span class="p">,</span>
-    <span class="n">calculate_distance</span><span class="p">,</span>
-    <span class="n">calculate_slope</span><span class="p">,</span>
-    <span class="n">is_in_circle</span><span class="p">,</span>
-    <span class="n">is_in_range</span><span class="p">,</span>
-    <span class="n">rotate_point</span><span class="p">,</span>
-    <span class="n">sort_clockwise</span><span class="p">,</span>
-    <span class="n">translate_point</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s">&#39;data&#39;</span><span class="p">,</span>
-    <span class="s">&#39;geometry&#39;</span><span class="p">,</span> 
-<span class="p">]</span>
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-swiss.data', this);">Show source &equiv;</a></p>
+  <div id="source-swiss.data" class="source">
+    <div class="codehilite"><pre><span class="k">def</span> <span class="nf">dedupe</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Removes any duplicate elements in a sequence and returns it as a list.</span>
+<span class="sd">    </span>
+<span class="sd">    Arguments:</span>
+<span class="sd">        sequence (list): List of elements to be deduplicated.</span>
+<span class="sd">        function (function): Function to modify each element in the sequence.</span>
+<span class="sd">            Default is None.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        list: The sequence of elements as a list with duplicates removed and</span>
+<span class="sd">            function applied to elements if specified. The order of the elements</span>
+<span class="sd">            in the original list is maintained.</span>
+<span class="sd">    </span>
+<span class="sd">    Examples:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">_dedupe</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="n">function</span><span class="p">):</span>
+        <span class="n">seen</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">function</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">element</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
+                    <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+                    <span class="k">yield</span> <span class="n">element</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">:</span>
+                <span class="n">element</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">element</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
+                    <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+                    <span class="k">yield</span> <span class="n">element</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">_dedupe</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="n">function</span><span class="p">))</span>
 </pre></div>
 
   </div>
@@ -1082,21 +1097,67 @@ table {
 
   <section id="section-items">
 
-
-
-    <h2 class="section-title" id="header-submodules">Sub-modules</h2>
-      <div class="item">
-      <p class="name"><a href="data.m.html">swiss.data</a></p>
+    <h2 class="section-title" id="header-functions">Functions</h2>
       
+  <div class="item">
+    <div class="name def" id="swiss.data.dedupe">
+    <p>def <span class="ident">dedupe</span>(</p><p>sequence, function=None)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Removes any duplicate elements in a sequence and returns it as a list.</p>
+<p>Arguments:
+    sequence (list): List of elements to be deduplicated.
+    function (function): Function to modify each element in the sequence.
+        Default is None.</p>
+<p>Returns:
+    list: The sequence of elements as a list with duplicates removed and
+        function applied to elements if specified. The order of the elements
+        in the original list is maintained.</p>
+<p>Examples:</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-swiss.data.dedupe', this);">Show source &equiv;</a></p>
+  <div id="source-swiss.data.dedupe" class="source">
+    <div class="codehilite"><pre><span class="k">def</span> <span class="nf">dedupe</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Removes any duplicate elements in a sequence and returns it as a list.</span>
+<span class="sd">    </span>
+<span class="sd">    Arguments:</span>
+<span class="sd">        sequence (list): List of elements to be deduplicated.</span>
+<span class="sd">        function (function): Function to modify each element in the sequence.</span>
+<span class="sd">            Default is None.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        list: The sequence of elements as a list with duplicates removed and</span>
+<span class="sd">            function applied to elements if specified. The order of the elements</span>
+<span class="sd">            in the original list is maintained.</span>
+<span class="sd">    </span>
+<span class="sd">    Examples:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">_dedupe</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="n">function</span><span class="p">):</span>
+        <span class="n">seen</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">function</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">element</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
+                    <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+                    <span class="k">yield</span> <span class="n">element</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">:</span>
+                <span class="n">element</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">element</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
+                    <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+                    <span class="k">yield</span> <span class="n">element</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">_dedupe</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="n">function</span><span class="p">))</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
   
 
-      </div>
-      <div class="item">
-      <p class="name"><a href="geometry.m.html">swiss.geometry</a></p>
-      
-  
 
-      </div>
   </section>
 
     </article>
