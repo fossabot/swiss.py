@@ -9,7 +9,6 @@ from .math import (
     sort_clockwise,
     translate_point,
 )
-from .swiss import version
 __all__ = [
     'data',
     'math', 
