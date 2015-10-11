@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 
-import math as M
+import geometry as G
 import unittest
 
 class TestStructures(unittest.TestCase):
     def test_calculate_change(self):
-        self.fail()
+        self.assertEqual(G.calculate_change((1, 1), (1, 1)), (0, 0))
 
     def test_calculate_distance(self):
         self.fail()

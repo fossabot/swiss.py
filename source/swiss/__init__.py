@@ -1,5 +1,5 @@
 from .data import dedupe
-from .math import (
+from .geometry import (
     calculate_change,
     calculate_distance,
     calculate_slope,
@@ -11,6 +11,6 @@ from .math import (
 )
 __all__ = [
     'data',
-    'math', 
+    'geometry', 
 ]
 

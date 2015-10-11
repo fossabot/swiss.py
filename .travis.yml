@@ -2,5 +2,5 @@ after_success: "codecov"
 install: "pip install -r requirements.txt"
 language: python
 python: "3.4"
-script: "find source -regex \".*_test.py\" | xargs -I test coverage run -p test; coverage combine"
+script: "find source -regex \".*_test.py\" | xargs -I test coverage run -p test && coverage combine"
 
