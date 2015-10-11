@@ -80,7 +80,7 @@ def is_in_circle(center, point, radius):
             otherwise False.
 
     Examples:
-        >>> is_in_circle((1,1), (0, 0), 1)
+        >>> is_in_circle((1,1), (0, 0), 1.5)
         True
         >>> is_in_circle((3,3), (1, 1), 1)
         False
@@ -104,7 +104,7 @@ def is_in_range(a, b, radius):
             otherwise False.
 
     Examples:
-        >>> is_in_range((1,1), (0, 0), 1)
+        >>> is_in_range((1,1), (0, 0), 1.5)
         True
         >>> is_in_range((3,3), (1, 1), 1)
         False
@@ -180,11 +180,11 @@ def translate_point(distance, head, tail):
             along the defined vector, relative to it's tail.
 
     Examples:
-        >>> translate_point((0, 0), (1, 1), 1)
+        >>> translate_point(1, (1, 1), (0, 0))
         (0.7071067811865475, 0.7071067811865475) 
-        >>> translate_point((1, 1), (3, 3), -1)
+        >>> translate_point(-1, (3, 3), (1, 1))
         (0.29289321881345254, 0.29289321881345254) 
-        >>> translate_point((5, 2), (-3, 4), 3)
+        >>> translate_point(3, (-3, 4), (5, 2))
         (2.089572499564004, 2.7276068751089992) 
     """
     distance_old = calculate_distance(tail, head)
