@@ -3,7 +3,7 @@
 from distutils.core import setup
 
 setup(name='swisspy',
-      version='0.0.0',
+      version='0.0.1',
       description='Creating a pocket sized toolkit library for any situation.',
       author='Mr Axilus',
       author_email='esmith@projectaxil.us',
