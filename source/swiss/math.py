@@ -111,7 +111,7 @@ def is_in_range(a, b, radius):
         >>> is_in_range((5,2), (-3, 4), 11)
         True
     """
-    return all(map(lambda (x, y): abs(x - y) < radius, zip(a, b)))
+    return all(map(lambda p: abs(p[0] - p[1]) < radius, zip(a, b)))
 
 
 def rotate_point(center, point, theta):
