@@ -1,6 +1,7 @@
 [swiss.py][github_pages]
 ========================
 [![GitHub version][github_badge]][github_tags] [![Build status][travis_badge]][travis] [![Code coverage][codecov_badge]][codecov] [![PyPI version][pypi_badge]][pypi]
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmraxilus%2Fswiss.py.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmraxilus%2Fswiss.py?ref=badge_shield)
 
 _Creating a pocket sized toolkit library for any situation._
 
@@ -29,3 +30,7 @@ This project is licensed under [CC BY-NC-SA 4.0][license].
 [pypi_badge]: https://img.shields.io/pypi/v/swisspy.svg
 [travis]: https://travis-ci.org/mraxilus/swiss.py
 [travis_badge]: https://img.shields.io/travis/mraxilus/swiss.py.svg
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmraxilus%2Fswiss.py.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmraxilus%2Fswiss.py?ref=badge_large)
